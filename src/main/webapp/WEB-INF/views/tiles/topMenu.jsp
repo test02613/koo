@@ -41,7 +41,7 @@
 									<a href="#">마이페이지</a>
 								</c:when>
 								<c:when test="${admin eq 1}">
-									<a href="#">관리자페이지</a>
+									<a href="/admin_main">관리자페이지</a>
 								</c:when>
 							</c:choose> <c:if test="${name == null}">
 								<a href="/login">마이페이지</a>

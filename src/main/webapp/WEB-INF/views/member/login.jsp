@@ -75,7 +75,7 @@ h1 {
 				id="id" placeholder="아이디">
 			<input type="password" class="form-control" name="pw"
 				id="pw" placeholder="비밀번호">
-			<a href="/findId">비밀번호
+			<a href="/findPw">비밀번호
 					재설정</a>
 			<a href="/findId">아이디
 					찾기</a>

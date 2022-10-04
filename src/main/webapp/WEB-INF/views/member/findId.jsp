@@ -5,9 +5,10 @@
 <html>
 <head>
 <title>아이디 비밀번호 찾기</title>
-<link rel="stylesheet" href="/stu/css/login.css">
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
 <style>
 #findMemform {
    width: 500px;
@@ -15,6 +16,16 @@
    margin-top: 50px;
    text-align: center;
    margin-bottom: 100px
+}
+h2{
+ width: 100%;
+   height: 50px;
+   border: 1px solid #e0e0e0;
+   border-radius : 10px;
+   margin-bottom: 20px;
+   text-align: center;
+   padding-top: 10px;
+
 }
 
 .contents {
@@ -66,22 +77,29 @@ button {
 <body>
    <!-- 로딩중 -->
    <div id="loadingBar" style="display:none;">
-        <img id="loading-image" src="img/Spinner.gif" alt="loading..." />
+        <img id="loading-image" src="../img/Spinner.gif" alt="loading..." />
     </div>
     
     
    <input type="hidden" name="alert" value="${resultMsg}" />
    <input type="hidden" name="isResult" value="${isResult}" />
-   <form action="findid" method="post">
+   <form action="/findIdAction" method="post">
       <div id="findMemform">
-         <h3 class="contents">아이디 찾기</h3>
+         <c:if test="${id == null }"> <h3 class="contents">아이디 찾기</h3> </c:if>
+         <c:if test="${id != null }"> <h3 class="contents">결과</h3> </c:if>
+         
          <div class="findid">
-            <input type="text" class="form-control" name="name"
+         
+         <c:if test="${id != null }">
+         
+		<h2>찾으시는 아이디는' ${id}' 입니다.</h2> </c:if>
+            <c:if test="${id == null }"> <input type="text" class="form-control" name="name"
                id="MEMBER_NAME" placeholder="이름">
-            <input type="email" class="form-control" name="email"
-               id="MEMBER_EMAIL" placeholder="이메일주소">
-            <a href="/stu/findPw.do">비밀번호 재설정</a>
-            <a href="/stu/findId.do">아이디 찾기</a>
+            
+           <input type="email" class="form-control" name="email"
+               id="MEMBER_EMAIL" placeholder="이메일주소"></c:if>
+            <a href="/findPw">비밀번호 재설정</a>
+            <a href="/findId">아이디 찾기</a>
             <button class="defaultBtn loginBtn" type="submit" id="findIdBtn">아이디 찾기</button>
          </div>
 
@@ -92,6 +110,20 @@ button {
       </div>
    </form>
 <script>
+
+/* function fn_login() {
+	if($(id)!=null){
+		alert(id);
+	} */
+		/* $("#id").focus();
+	} else if($("#pw").val()==""){
+		alert("비밀번호를 입력해주세요");
+		$("#pw").focus();
+	} else {
+		$("#frm").submit();
+}
+	} */
+
 /* $(document).ready(function() {
    $("#findIdBtn").click(function(){
       //이메일 유형
