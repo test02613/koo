@@ -11,7 +11,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.aplus.model.MemberVO;
 import com.aplus.controller.LoginController;
 import com.aplus.dao.MemberDAO;
 import com.aplus.model.MemberVO;
