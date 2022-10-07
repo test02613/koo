@@ -24,7 +24,7 @@ text-align:center;
 align-content: center;
 }
 td:hover{
-text-decoration: underline;
+
 
 }
 
@@ -47,7 +47,7 @@ text-align:center;
 				
 				<thead class="table-dark">
 					<tr >
-						<th id="title" width="100" scope="col">#</th>
+						<th id="title" width="100" scope="col">번호</th>
 						<th id="title"   scope="col">제목</th>
 						<th id="title" width="100"scope="col">작성일</th>
 						
@@ -55,21 +55,26 @@ text-align:center;
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${list}" var="list">
-						
-						<tr onClick="location.href='${path}/eventDetail?num=${list.eventnum}'"  style="cursor:pointer;">
-							<td id="title" style="text-decoration: none;"><c:out value="${list.eventnum}" /></td>
-							<td  ><c:out value="${list.eventtitle}" /></td>
-							<td style="text-decoration: none;"><c:out value="${list.eventdate}" /></td>
-						</tr>
-					</c:forEach>
 					
+						
+						<tr >
+							<td id="title" style="text-decoration: none;"><c:out value="${detail.eventnum}" /></td>
+							<td  ><c:out value="${detail.eventtitle}" /></td>
+							<td style="text-decoration: none;"><c:out value="${detail.eventdate}" /></td>
+						</tr>
+					
+					<tr >
+						<td colspan="3" height="500" scope="col"><c:out value="${detail.eventcontent}" /></td>
+						
+						
+						
+					</tr>
 					
 				</tbody>
 			</table>
 			</div>
 			<div id="button">
-	<a href="/eventCreate"><button>글쓰기</button></a>
+	<a href='${path}/eventUpdate?num=${detail.eventnum}'><button>수정하기</button></a>
 	</div>
 		</div>
 	<script

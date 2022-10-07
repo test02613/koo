@@ -10,6 +10,7 @@
     
      <typeAliases>
         <typeAlias type="com.aplus.model.MemberVO" alias="MemberVO"></typeAlias>
+        <typeAlias type="com.aplus.event.EventVO" alias="EventVO"></typeAlias>
     </typeAliases>     
     <!-- <mappers>
     	<mapper resource="com.aplus.mapper.MemberMapper.xml"/>

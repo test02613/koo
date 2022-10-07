@@ -1,19 +1,29 @@
 package com.aplus.event;
 
 import java.sql.Date;
+import java.util.List;
 
 public class EventVO {
-   
-   private int eventnum;
+	
+   private Integer eventnum;
    private Date eventdate;
    private String eventtitle;
    private String eventcontent;
-  
-   
-   public int getEventnum() {
+   /*private List<EventVO> eventVOList;
+	
+
+	
+	public List<EventVO> geteventVOList() {
+		return eventVOList;
+	}
+	public void setEventVOList(List<EventVO> eventVOList) {
+		this.eventVOList = eventVOList;
+	}*/
+	
+   public Integer getEventnum() {
       return eventnum;
    }
-   public void setEventnum(int eventnum) {
+   public void setEventnum(Integer eventnum) {
       this.eventnum = eventnum;
    }
    public Date getEventdate() {
@@ -34,8 +44,17 @@ public class EventVO {
    public void setEventcontent(String eventcontent) {
       this.eventcontent = eventcontent;
    }
+
+  
    
-   @Override
+public EventVO(Integer eventnum, Date eventdate, String eventtitle, String eventcontent) {
+	super();
+	this.eventnum = eventnum;
+	this.eventdate = eventdate;
+	this.eventtitle = eventtitle;
+	this.eventcontent = eventcontent;
+}
+@Override
    public String toString() {
       return "EventVO [eventnum=" + eventnum + ", eventdate=" + eventdate + ", eventtitle=" + eventtitle
             + ", eventcontent=" + eventcontent + "]";
@@ -44,3 +63,49 @@ public class EventVO {
    
 
 }
+
+	/*  
+	   private Date eventdate;
+	   private String eventtitle;
+	   private String eventcontent;
+
+	   
+	  
+	   public Date getEventdate() {
+	      return eventdate;
+	   }
+	   public void setEventdate(Date eventdate) {
+	      this.eventdate = eventdate;
+	   }
+	   public String getEventtitle() {
+	      return eventtitle;
+	   }
+	   public void setEventtitle(String eventtitle) {
+	      this.eventtitle = eventtitle;
+	   }
+	   public String getEventcontent() {
+	      return eventcontent;
+	   }
+	   public void setEventcontent(String eventcontent) {
+	      this.eventcontent = eventcontent;
+	   }
+
+	  
+	   
+	public EventVO(Date eventdate, String eventtitle, String eventcontent) {
+		super();
+		this.eventdate = eventdate;
+		this.eventtitle = eventtitle;
+		this.eventcontent = eventcontent;
+	}
+	@Override
+	   public String toString() {
+	      return "EventVO [eventdate=" + eventdate + ", eventtitle=" + eventtitle
+	            + ", eventcontent=" + eventcontent + "]";
+	   }
+	   
+	   
+
+	}*/
+
+  
