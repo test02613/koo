@@ -5,8 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+
 </head>
 <body>
+
 <div class="wrapper">
 		<div id="header_wrap">
 			<div id="logo_area">
@@ -16,6 +19,7 @@
 					</a>
 				</div>
 			</div>
+			
 			<div id="nav">
 				<ul>
 					<li id="dropdown">
@@ -78,9 +82,9 @@
 					</li>
 				</ul>
 			</div>
-			
+			</div>
 
 		</div>
-	</div>
+	
 </body>
 </html>

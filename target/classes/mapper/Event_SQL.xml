@@ -11,8 +11,8 @@
 		<!-- <result column="hashed_password" property="hashedPassword" jdbcType="NVARCHAR" 
 			javaType="String"/> -->
 	</resultMap>
-	
-	
+
+
 	<insert id="event_insert" parameterType="EventVO">
 		<selectKey keyProperty="eventnum" resultType="Integer"
 			order="BEFORE">
@@ -27,21 +27,32 @@
 
 		SELECT *
 		FROM EVENT
-		ORDER BY eventnum DESC
+		ORDER BY
+		eventnum DESC
 
 	</select>
 	<!-- 이벤트 상세 -->
 	<select id="event_detail" resultType="EventVO">
 
-		SELECT * 
-		FROM EVENT 
+		SELECT *
+		FROM EVENT
 		WHERE eventnum = #{eventnum}
 
 	</select>
-	
-	<update id="event_Update"  parameterType="EventVO" >
-	update event set eventtitle = #{eventtitle} , eventcontent = #{eventcontent} where eventnum = #{eventnum}
+
+	<update id="event_Update" parameterType="EventVO">
+		update event set eventtitle = #{eventtitle} , eventcontent = #{eventcontent}
+		where eventnum = #{eventnum}
 	</update>
-	
+
+	<delete id="event_Delete">
+		delete from event
+		where eventnum = #{eventnum}
+	</delete>
+
+	<!-- 게시물 총 갯수 -->
+	<select id="event_Count" resultType="int">
+		select count(eventnum) from event
+	</select>
 
 </mapper>

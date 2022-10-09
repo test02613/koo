@@ -7,11 +7,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+
 <body>
 	<div class="wrapper">
+		
 		<div id="header_wrap">
 
-			<div id="top_menu_area">
+			<div id="top_menu_area" >
 
 				<div id="top_menu_left">
 					<ul>
@@ -58,6 +60,7 @@
 
 
 		</div>
+		
 	</div>
 </body>
 </html>

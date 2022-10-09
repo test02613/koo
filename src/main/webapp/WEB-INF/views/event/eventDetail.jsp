@@ -74,7 +74,9 @@ text-align:center;
 			</table>
 			</div>
 			<div id="button">
-	<a href='${path}/eventUpdate?num=${detail.eventnum}'><button>수정하기</button></a>
+	<c:if test="${admin eq 1}"><a href='${path}/eventUpdate?num=${detail.eventnum}'><button>수정하기</button></a></c:if>
+	<a href="/event"><button>목록</button></a>
+	<c:if test="${admin eq 1}"><a href='${path}/eventDelete?num=${detail.eventnum}'><button>삭제</button></a></c:if>
 	</div>
 		</div>
 	<script

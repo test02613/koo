@@ -36,12 +36,26 @@ public class EventDAOimpl implements EventDAO{
 		
 		return sql.selectOne("mapper.Event_SQL.event_detail",num);
 	}
+
+	@Override
+	public EventVO eventDelete(Integer num) throws Exception {
+		// TODO Auto-generated method stub
+		
+		return sql.selectOne("mapper.Event_SQL.event_Delete",num);
+	}
 	
 	@Override
 	public EventVO eventUpdate(EventVO vo) throws Exception {
 		// TODO Auto-generated method stub
 		
 		return sql.selectOne("mapper.Event_SQL.event_Update",vo);
+	}
+
+
+	@Override
+	public int count() throws Exception {
+		// TODO Auto-generated method stub
+		return sql.selectOne("mapper.Event_SQL.event_Count");
 	}
 
 }

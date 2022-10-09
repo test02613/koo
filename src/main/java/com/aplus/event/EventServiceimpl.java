@@ -33,11 +33,23 @@ public class EventServiceimpl implements EventService{
 		// TODO Auto-generated method stub
 		return dao.eventDetail(num);
 	}
+
+	@Override
+	public EventVO eventDelete(Integer num) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.eventDelete(num);
+	}
 	
 	@Override
 	public EventVO eventUpdate(EventVO vo) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.eventUpdate(vo);
+	}
+
+	@Override
+	public int count() throws Exception {
+		// TODO Auto-generated method stub
+		return dao.count();
 	}
 	
 }

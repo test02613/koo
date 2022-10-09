@@ -25,10 +25,16 @@
 <link rel="stylesheet" href="${RESOURCES_PATH}/css/common.css">
 <title><tiles:insertAttribute name="title" /></title>
 </head>
-
+<style>
+.sticky{
+position: sticky;
+top:0px;
+z-index: 99999999;
+}
+</style>
 <body>
-
-	<tiles:insertAttribute name="topMenu" />
+<div class="wrapper">
+	<div class="sticky"><tiles:insertAttribute name="topMenu" /></div>
 
 	<tiles:insertAttribute name="header" />
 
@@ -36,7 +42,7 @@
 
 	<tiles:insertAttribute name="footer" />
 
-
+</div>
 </body>
 
 
