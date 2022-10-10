@@ -60,7 +60,13 @@
 
 
 		</div>
-		
+		<div id="logo_area">
+				<div id="logo">
+					<a href="main">
+					<img src="../resources/img/logo.png" />
+					</a>
+				</div>
+			</div>
 	</div>
 </body>
 </html>

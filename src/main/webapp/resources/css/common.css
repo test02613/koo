@@ -227,7 +227,8 @@
 #dropdown-content {
 	position: absolute;
 	background-color: #24292F;
-	min-width: 160px;
+	
+	
 	display: none;
 	color: white;
 	border-radius: 0 0 10px 10px;

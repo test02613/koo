@@ -34,9 +34,9 @@ z-index: 99999999;
 </style>
 <body>
 <div class="wrapper">
-	<div class="sticky"><tiles:insertAttribute name="topMenu" /></div>
+	<tiles:insertAttribute name="topMenu" />
 
-	<tiles:insertAttribute name="header" />
+	<div class="sticky"><tiles:insertAttribute name="header" /></div>
 
 	<tiles:insertAttribute name="body" />
 
