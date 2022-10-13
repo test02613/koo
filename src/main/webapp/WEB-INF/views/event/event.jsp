@@ -57,7 +57,7 @@ text-align:center;
 				<tbody>
 					<c:forEach items="${list}" var="list">
 						
-						<tr onClick="location.href='${path}/eventDetail?num=${list.eventnum}'"  style="cursor:pointer;">
+						<tr onClick="location.href='/eventDetail?num=${list.eventnum}'"  style="cursor:pointer;">
 							<td id="title" style="text-decoration: none;"><c:out value="${list.eventnum}" /></td>
 							<td  ><c:out value="${list.eventtitle}" /></td>
 							<td style="text-decoration: none;"><c:out value="${list.eventdate}" /></td>

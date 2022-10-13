@@ -5,11 +5,12 @@ import java.sql.Date;
 public class ItemVO {
 	private Integer itemnum;
 	private String itemname;
-	private String itemcost;
-	private Integer itemcategory;
-	private String itemstock;
+	private Integer itemcat1;
+	private Integer itemcat2;
 	private String itemimg;
 	private String itemdetailimg;
+	private Integer itemcost;
+	private Integer itemstock;
 
 	public Integer getItemnum() {
 		return itemnum;
@@ -27,28 +28,20 @@ public class ItemVO {
 		this.itemname = itemname;
 	}
 
-	public String getItemcost() {
-		return itemcost;
+	public Integer getitemcat1() {
+		return itemcat1;
 	}
 
-	public void setItemcost(String itemcost) {
-		this.itemcost = itemcost;
+	public void setitemcat1(Integer itemcat1) {
+		this.itemcat1 = itemcat1;
 	}
 
-	public Integer getitemcategory() {
-		return itemcategory;
-	}
-	
-	public void setitemcategory(Integer itemcategory) {
-		this.itemcategory = itemcategory;
+	public Integer getitemcat2() {
+		return itemcat2;
 	}
 
-	public String getItemstock() {
-		return itemstock;
-	}
-
-	public void setItemstock(String itemstock) {
-		this.itemstock = itemstock;
+	public void setitemcat2(Integer itemcat2) {
+		this.itemcat2 = itemcat2;
 	}
 
 	public String getItemimg() {
@@ -67,21 +60,40 @@ public class ItemVO {
 		this.itemdetailimg = itemdetailimg;
 	}
 
-	public ItemVO(Integer itemnum, String itemname, String itemcost, Integer itemcategory,  String itemstock, String itemimg, String itemdetailimg) {
+	public Integer getItemcost() {
+		return itemcost;
+	}
+
+	public void setItemcost(Integer itemcost) {
+		this.itemcost = itemcost;
+	}
+
+	public Integer getItemstock() {
+		return itemstock;
+	}
+
+	public void setItemstock(Integer itemstock) {
+		this.itemstock = itemstock;
+	}
+
+	public ItemVO(Integer itemnum, String itemname, Integer itemcat1, Integer itemcat2, String itemimg,
+			String itemdetailimg, Integer itemcost, Integer itemstock) {
 		super();
 		this.itemnum = itemnum;
 		this.itemname = itemname;
-		this.itemcost = itemcost;
-		this.itemcategory = itemcategory;
-		this.itemstock = itemstock;
+		this.itemcat1 = itemcat1;
+		this.itemcat2 = itemcat2;
 		this.itemimg = itemimg;
 		this.itemdetailimg = itemdetailimg;
+		this.itemcost = itemcost;
+		this.itemstock = itemstock;
 	}
 
 	@Override
 	public String toString() {
-		return "ItemVO [itemnum=" + itemnum + ", itemname=" + itemname + ", itemcost=" + itemcost + ", itemcategory="
-				+ itemcategory +", itemstock=" + itemstock + ", itemimg=" + itemimg + ", itemdetailimg=" + itemdetailimg + "]";
+		return "ItemVO [itemnum=" + itemnum + ", itemname=" + itemname + ", itemcat1=" + itemcat1 + ", itemcat2="
+				+ itemcat2 + ", itemimg=" + itemimg + ", itemdetailimg=" + itemdetailimg + ", itemcost=" + itemcost
+				+ ", itemstock=" + itemstock + "]";
 	}
 
 }

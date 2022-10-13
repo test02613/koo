@@ -32,13 +32,12 @@
 								<!-- Product name-->
 								<h5 class="fw-bolder"><c:out value="${itemlist.itemname}" /></h5>
 								<!-- Product price-->
-								$40.00 - $80.00
 							</div>
 						</div>
 						<!-- Product actions-->
 						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 							<div class="text-center">
-								<a class="btn btn-outline-dark mt-auto" href="#">View
+								<a class="btn btn-outline-dark mt-auto" href="/itemDetail?num=${itemlist.itemnum}">View
 									options</a>
 							</div>
 						</div>
