@@ -3,13 +3,32 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.Order_SQL">
-
-	<select id="order_item"  resultType="ItemAttrVO">
-		select * from ITEMATTR where itemcode = #{itemcode} 
+	<insert id="orderAction">
+	<selectKey keyProperty="ordernum" resultType="INTEGER" order="BEFORE">
+	      SELECT ITEMNUM_SEQ.nextval FROM DUAL
+	   </selectKey>
+	      INSERT INTO ORDERTABLE values(#{id} , #{ordernum} , 0,
+	      0, #{ordercost}, sysdate, 0, #{postcode},
+	      #{address}, #{addressdetail}, 0, #{name}, #{itemcode} )
+	</insert>
+	
+	<select id="order_item" resultType="ItemAttrVO">
+		select * from ITEMATTR where
+		itemcode = #{itemcode}
 	</select>
 
-	<select id="order_member"  resultType="MemberVO">
-		select * from member where id = #{id} 
+	<select id="order_member" resultType="MemberVO">
+		select * from member where
+		id = #{id}
 	</select>
 
+	<select id="order_finish" resultType="OrderVO">
+		select * from ordertable where
+		ordernum = #{ordernum}
+	</select>
+
+	<update id="point_update" parameterType="MemberVO">
+		update member set point = #{point} 
+		where id = #{id}
+	</update>
 </mapper>

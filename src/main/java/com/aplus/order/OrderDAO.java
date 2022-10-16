@@ -10,4 +10,10 @@ public interface OrderDAO {
 	
 	public MemberVO member(String id) throws Exception;
 
+	public void orderAction(OrderVO vo) throws Exception;
+	
+	public OrderVO orderFinish(Integer num) throws Exception;
+	
+	public MemberVO point(MemberVO vo) throws Exception;
+
 }

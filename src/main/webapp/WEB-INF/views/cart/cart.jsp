@@ -21,7 +21,7 @@
 <script src="/stu/js/bootstrap.min.js"></script>
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="/stu/js/common.js" charset="utf-8"></script>
+<script src="../resources/js/common.js" charset="utf-8"></script>
 
 <style>
 
@@ -62,7 +62,7 @@ function fn_allchk(){
 		}
 }
 
-function fn_amount(index){ //장바구니 상품수량 변경
+/* function fn_amount(index){ //장바구니 상품수량 변경
 	var array8 = document.getElementsByName("goods_att_amount"); //재고수량
 	var array1 = document.getElementsByName("basket_goods_amount"); //수량
 	var array4 = document.getElementsByName("chk");
@@ -179,7 +179,7 @@ function fn_like(){
 
 function fn_all_order(){ //장바구니 전제주문
 	document.basket.submit();
-}
+} */
 function fn_select_order(){ //선택상품 주문
 	var obj = $("[name=chk]");
     var SELECT_BASKET_NO = new Array(); // 배열 선언
@@ -190,8 +190,8 @@ function fn_select_order(){ //선택상품 주문
     });
     if(SELECT_BASKET_NO[0] != null){
     	var comSubmit = new ComSubmit();
-		comSubmit.setUrl("<c:url value='/order/basketSelectOrder.do' />");
-		comSubmit.addParam("SELECT_BASKET_NO", SELECT_BASKET_NO);
+		comSubmit.setUrl("<c:url value='/cart_order' />");
+		comSubmit.addParam("itemcode", SELECT_BASKET_NO);
 		comSubmit.submit();
     }else{
     	alert("구매할 상품을 선택해 주세요.");
@@ -261,7 +261,7 @@ function fn_select_order(){ //선택상품 주문
 						<input type="hidden" name="goods_att_no" value="${row.GOODS_ATT_NO }">
 						<tr>
 							<td style="text-align:center">
-                  				<input type="checkbox" name="chk" id="chk" value="${row.BASKET_NO }">
+                  				<input type="checkbox" name="chk" id="chk" value="${list.itemcode}">
                   			</td>
                   			<td>
                   				<img src='/stu/file/${row.GOODS_THUMBNAIL}' width="70px" height="70px">

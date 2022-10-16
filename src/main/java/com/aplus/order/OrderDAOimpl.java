@@ -25,4 +25,23 @@ public class OrderDAOimpl implements OrderDAO{
 		// TODO Auto-generated method stub
 		return sql.selectOne("mapper.Order_SQL.order_member",id);
 	}
+
+	@Override
+	public void orderAction(OrderVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		sql.insert("mapper.Order_SQL.orderAction",vo);
+		
+	}
+
+	@Override
+	public OrderVO orderFinish(Integer num) throws Exception {
+		// TODO Auto-generated method stub
+		return sql.selectOne("mapper.Order_SQL.order_finish",num);
+	}
+
+	@Override
+	public MemberVO point(MemberVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return sql.selectOne("mapper.Order_SQL.point_update",vo);
+	}
 }

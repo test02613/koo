@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.aplus.item.ItemAttrVO;
 import com.aplus.item.ItemController;
@@ -36,6 +38,38 @@ public class OrderController {
 		logger.info("id"+id);
 		logger.info("vo"+vo);
 		return "order/order";
+	}
+	@RequestMapping(value = "/orderAction", method = { RequestMethod.GET, RequestMethod.POST })
+	public String orderActionPost(OrderVO vo,HttpSession session) throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 결제 페이지 진입");
+		String id = (String) session.getAttribute("id");//세션 id가져오기
+		vo.setId(id);
+		orderservice.orderAction(vo);
+		Integer num = vo.getOrdernum();
+		
+		return "redirect:/orderFinish?num="+num;
+	}
+
+	@RequestMapping(value = "/pointUp", method = { RequestMethod.GET, RequestMethod.POST })
+	@ResponseBody
+	public String pointUpPost(@RequestParam("getpoint") String getpoint,HttpSession session,MemberVO vo) throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 결제 페이지 진입");
+		int point =Integer.parseInt(getpoint);
+		String id = (String) session.getAttribute("id");
+		vo.setPoint(point);
+		vo.setId(id);
+		orderservice.point(vo);
+		return "point";
+	}
+	@RequestMapping(value = "/orderFinish", method = { RequestMethod.GET, RequestMethod.POST })
+	public String orderFinishGet(OrderVO vo,HttpSession session,Integer num,Model model) throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 결제완료페이지 진입");
+		/*orderservice.orderAction(vo);*/
+		vo = orderservice.orderFinish(num);
+		model.addAttribute("order", vo);
+		
+		
+		return "order/orderFinish";
 	}
 	
 }

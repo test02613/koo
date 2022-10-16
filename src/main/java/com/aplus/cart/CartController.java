@@ -35,4 +35,16 @@ public class CartController {
 		
 		return "cart/cart";
 	}
+	@RequestMapping(value = "/cartorder", method = RequestMethod.GET)
+	public String cartorderGet(Model model,HttpSession session,CartVO vo) throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>장바구니 진입");
+		
+		String id = (String) session.getAttribute("id");
+		List<CartVO> list = cartservice.cart(id);
+		model.addAttribute("list", list);
+		logger.info("list"+list);
+		
+		
+		return "cart/cart";
+	}
 }

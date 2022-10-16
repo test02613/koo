@@ -23,5 +23,24 @@ public class OrderServiceimpl implements OrderService {
 		// TODO Auto-generated method stub
 		return dao.member(id);
 	}
+
+	@Override
+	public void orderAction(OrderVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		dao.orderAction(vo);
+		
+	}
+
+	@Override
+	public OrderVO orderFinish(Integer num) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.orderFinish(num);
+	}
+
+	@Override
+	public MemberVO point(MemberVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.point(vo);
+	}
 	
 }
