@@ -1,5 +1,19 @@
 package com.aplus.item;
 
+import java.sql.Date;
+
+import com.aplus.order.OrderVO;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Builder
+@Getter @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ItemAttrVO {
 
 	private Integer itemnum;
@@ -10,7 +24,7 @@ public class ItemAttrVO {
 	private String itemcolor;
 	private String itemgb;
 	
-	public Integer getItemnum() {
+/*	public Integer getItemnum() {
 		return itemnum;
 	}
 	public void setItemnum(Integer itemnum) {
@@ -69,5 +83,5 @@ public class ItemAttrVO {
 				+ itemstock + ", itemname=" + itemname + ", itemcolor=" + itemcolor + ", itemgb=" + itemgb + "]";
 	}
 
-
+*/
 }

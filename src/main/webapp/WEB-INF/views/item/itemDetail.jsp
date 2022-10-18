@@ -11,8 +11,8 @@
 <meta charset="utf-8">
 <title>상품 상세보기</title>
 <script src="https://code.jquery.com/jquery-3.4.1.js"
-   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-   crossorigin="anonymous"></script>
+	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+	crossorigin="anonymous"></script>
 <%-- <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
@@ -38,9 +38,10 @@
 	crossorigin="anonymous"></script> --%>
 </head>
 <style>
-#ba{
-background-color: lightgray;
+#ba {
+	background-color: lightgray;
 }
+
 .layer {
 	display: none;
 }
@@ -372,20 +373,25 @@ p {
 				<table>
 					<tr>
 						<td><select name="ColorList" id="ColorList"
-							class='total_cartAdd' 
-							style="width: 600px; height: 30px;">
+							class='total_cartAdd' style="width: 600px; height: 30px;">
 								<option value="">==(필수)옵션: 색상 선택 ==</option>
 								<c:forEach var="list1" items="${list1}" varStatus="index">
-									<c:if test="${list1.itemstock == 0}" ><option id="ba" value="${list1.itemcolor}" disabled="disabled">${list1.itemcolor} (품절) </option></c:if>
-									<c:if test="${list1.itemstock != 0}" ><option value="${list1.itemcolor}">${list1.itemcolor}  </option></c:if>
-									
+									<c:if test="${list1.itemstock == 0}">
+										<option id="ba" value="${list1.itemcolor}" disabled="disabled">${list1.itemcolor}
+											(품절)</option>
+									</c:if>
+									<c:if test="${list1.itemstock != 0}">
+										<option value="${list1.itemcolor}">${list1.itemcolor}
+										</option>
+									</c:if>
+
 								</c:forEach>
 						</select></td>
 
 
 					</tr>
 
-					
+
 				</table>
 			</div>
 
@@ -411,8 +417,7 @@ p {
 				<div class="total_price" style="float: right;">원</div>
 				<div class="totals-value" id="cart-total" style="float: right;">0</div>
 			</div>
-			<br>
-			<br>
+			<br> <br>
 
 			<table>
 				<tr>
@@ -430,11 +435,12 @@ p {
 				class="btn btn-outline-danger" id="insertBasket"
 				onclick="fn_InsertBasket()">장바구니</button>
 			<button style="width: 270px; height: 58px;"
-				class="btn btn-outline-danger" id="goodsOrder"
-				>구매하기</button>
-			
+				class="btn btn-outline-danger" id="goodsOrder">구매하기</button>
+
 			<br>
-	<h1><a href=/order>ㄱㄱ</a></h1>
+			<h1>
+				<a href=/order>ㄱㄱ</a>
+			</h1>
 			<!-- <button id="update" onclick="fn_update()">수정하기</button> -->
 
 		</div>
@@ -451,128 +457,9 @@ p {
 	<br>
 	<br>
 	<br>
-	<div align="center">
-		<ul class="nav nav-tabs" id="myTab" role="tablist" style="width: 60%">
-			<li class="nav-item" role="presentation" style="width: 25%" id="f1"><a
-				class="nav-link active" id="home-tab" data-toggle="tab" href="#home"
-				role="tab" aria-controls="home" aria-selected="true"
-				onClick="fnMove(1)">상세정보</a></li>
-			<li class="nav-item" role="presentation" style="width: 25%"><a
-				id="profile-tab" href="#profile" role="tab" aria-controls="profile"
-				aria-selected="false" onClick="fnMove(2)">상품문의</a></li>
-			<li class="nav-item" role="presentation" style="width: 25%"><a
-				id="contact-tab" href="#contact" role="tab" aria-controls="contact"
-				aria-selected="false" onClick="fnMove(3)">쇼핑가이드</a></li>
-			<li class="nav-item" role="presentation" style="width: 25%"><a
-				id="contact-tab" href="#re" role="tab" aria-controls="re"
-				aria-selected="false" onClick="fnMove(4)">상품평</a></li>
-		</ul>
-		<div class="tab-content" id="myTabContent">
-			<div class="tab-pane fade show active" id="home" role="tabpanel"
-				aria-labelledby="home-tab">${list.GOODS_CONTENT}</div>
-			<!-- 상세정보 -->
-
-		</div>
-	</div>
 	<br>
 	<br>
 
-	<div align="center">
-		<ul class="nav nav-tabs" id="myTab" role="tablist" style="width: 60%">
-			<li class="nav-item" role="presentation" style="width: 25%"><a
-				id="home-tab" href="#home1" role="tab" aria-controls="home1"
-				aria-selected="false" onClick="fnMove(1)">상세정보</a></li>
-			<li class="nav-item" role="presentation" style="width: 25%" id="f2"><a
-				class="nav-link active" id="profile-tab" data-toggle="tab"
-				href="#profile1" role="tab" aria-controls="profile1"
-				aria-selected="true" onClick="fnMove(2)">상품문의</a></li>
-			<li class="nav-item" role="presentation" style="width: 25%"><a
-				id="contact-tab" href="#contact1" role="tab"
-				aria-controls="contact1" aria-selected="false" onClick="fnMove(3)">쇼핑가이드</a>
-			</li>
-			<li class="nav-item" role="presentation" style="width: 25%"><a
-				id="contact-tab" href="#re1" role="tab" aria-controls="re1"
-				aria-selected="false" onClick="fnMove(4)">상품평</a></li>
-		</ul>
-		<div class="tab-content" id="myTabContent">
-
-			<div class="tab-pane fade show active" id="profile1" role="tabpanel"
-				aria-labelledby="profile-tab1">
-				<!-- 상품문의 -->
-
-				<table align="center" class="board_list">
-					<colgroup>
-						<col width="9%" />
-						<col>
-						<col width="15%" />
-						<col width="14%" />
-						<col width="13%" />
-					</colgroup>
-					<thead>
-						<tr>
-							<th>번호</th>
-							<th>문의</th>
-							<th>작성자</th>
-							<th>작성일</th>
-							<th>답변</th>
-						</tr>
-					</thead>
-				</table>
-				<table class="board_list2">
-
-					<tbody id="board_list1" name="board_list1">
-					<colgroup>
-						<col width="9%" />
-						<col>
-						<col width="10%" />
-						<col width="13%" />
-						<col width="13%" />
-					</colgroup>
-
-					</tbody>
-				</table>
-				<br>
-				<div style="margin-left: 1050px">
-					<button type="button" class="btn btn-secondary btn-sm"
-						onclick="fn_Qna()">상품문의</button>
-				</div>
-
-
-
-			</div>
-		</div>
-	</div>
-
-	<br>
-	<br>
-
-	<div align="center">
-		<ul class="nav nav-tabs" id="myTab" role="tablist" style="width: 60%">
-			<li class="nav-item" role="presentation" style="width: 25%"><a
-				id="home-tab" href="#home2" role="tab" aria-controls="home2"
-				aria-selected="false" onClick="fnMove(1)">상세정보</a></li>
-			<li class="nav-item" role="presentation" style="width: 25%"><a
-				id="profile-tab" href="#profile2" role="tab"
-				aria-controls="profile2" aria-selected="false" onClick="fnMove(2)">상품문의</a></li>
-			<li class="nav-item" role="presentation" style="width: 25%" id="f3"><a
-				class="nav-link active" id="contact-tab" data-toggle="tab"
-				href="#contact2" role="tab" aria-controls="contact2"
-				aria-selected="true" onClick="fnMove(3)">쇼핑가이드</a></li>
-			<li class="nav-item" role="presentation" style="width: 25%"><a
-				id="contact-tab" href="#re2" role="tab" aria-controls="re2"
-				aria-selected="false" onClick="fnMove(4)">상품평</a></li>
-		</ul>
-		<div class="tab-content" id="myTabContent">
-
-
-			<div class="tab-pane fade show active" id="contact2" role="tabpanel"
-				aria-labelledby="contact-tab" align="left"
-				style="margin-left: 400px">
-				<!-- 쇼핑가이드 -->
-			</div>
-
-		</div>
-	</div>
 
 	<br>
 	<br>
@@ -606,6 +493,7 @@ p {
 						<br>
 						<h3>REVIEW</h3>
 						<p class="desc">상품의 사용후기를 적어주세요.</p>
+						<c:forEach var="order" items="${order}" varStatus="index">
 						<table border="1" width="60%">
 							<caption></caption>
 							<colgroup>
@@ -627,9 +515,16 @@ p {
 							</thead>
 
 							<tbody id="reviewList" name="reviewList">
+								<tr>
+								<td >번호</td>
+								<td >제목</td>
+								<td >작성자</td>
+								<td >작성일</td>
+								</tr>
 							</tbody>
 
 						</table>
+						</c:forEach>
 					</div>
 				</div>
 
@@ -652,12 +547,15 @@ p {
 
 
 <script type="text/javascript">
-var color ;
-var num ;
+	var color;
+	var num;
 	$('#ColorList').on("change", function() {//셀렉트 박스
 		color = $("#ColorList option:selected").val();
-		num = ${detail.itemnum}
-		
+		num = $
+		{
+			detail.itemnum
+		}
+
 		var data = {
 			color : color,
 			num : num
@@ -673,64 +571,62 @@ var num ;
 				console.log("확인 : " + result);
 				var a = result;
 				if (result) {
-					  /* alert("완료"+a); */  
+					/* alert("완료"+a); */
 				} else {
 					/*  alert("전송된 값 없음"+result);  */
 				}
 			},
 			error : function() {
-				 /* alert("에러 발생"+result); */
+				/* alert("에러 발생"+result); */
 			}
 
 		});//아작스 끝
-		
-		
+
 	})
-	
-	var code ;
-	$("#goodsOrder").on("click", function(){ // 구매 버튼
-		
-		/*  alert(num); */ 
-		
-		
-		order();	
+
+	var code;
+	$("#goodsOrder").on("click", function() { // 구매 버튼
+
+		/*  alert(num); */
+
+		order();
 	});
-	
-	 function order() {
-		
-		if(num == undefined ){
+
+	function order() {
+
+		if (num == undefined) {
 			alert("상품을 선택해 주세요");
-		}else{
+		} else {
 			$.ajax({
 				type : "get",
 				url : "/itemCode",
-				data : {color : color,
-				num : num},
-				async:false,//전역 변수 보내기
+				data : {
+					color : color,
+					num : num
+				},
+				async : false,//전역 변수 보내기
 				dataType : "json",
 				success : function(result) {
 					code = result;
-					
+
 					console.log("확인 : " + result);
 					if (result) {
-						  /* alert("완료"+code);  */
+						/* alert("완료"+code);  */
 						return code;
 					} else {
-						  //alert("전송된 값 없음"+result);  
+						//alert("전송된 값 없음"+result);  
 					}
 				},
 				error : function() {
-					 // alert("에러 발생"+result); 
+					// alert("에러 발생"+result); 
 				}
 
 			});//아작스 끝
-	
-			
-				
-				location.href = "/order?code="+code;
-			}
-	} 
-	
+
+			location.href = "/order?code=" + code;
+		}
+	}
+
 	/* function order() { // 구매하기
 		if(doubleSubmitCheck()) return; // 중복클릭 방지
 
@@ -750,5 +646,4 @@ var num ;
 		}
 	   
 	} */
-	
 </script>

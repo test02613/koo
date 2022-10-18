@@ -2,6 +2,17 @@ package com.aplus.model;
 
 import java.sql.Date;
 
+import com.aplus.item.ItemAttrVO;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+@Builder
+@Getter @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class MemberVO {
    
    // 회원 ID
@@ -46,7 +57,7 @@ public class MemberVO {
    
    
    
-   public MemberVO() {
+  /* public MemberVO() {
       super();
    }
    
@@ -209,6 +220,6 @@ public class MemberVO {
             + addressDetail + ", admin=" + admin + ", joinDate=" + joinDate + ", point=" + point + ", leave="
             + leave + "]";
    }
-   
+   */
 
 }

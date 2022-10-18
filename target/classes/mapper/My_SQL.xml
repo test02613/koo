@@ -3,10 +3,47 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.My_SQL">
+	<resultMap type="ItemAttrVO" id="itemAttr">
+
+		<result column="ITEMCOST" property="itemcost"
+			jdbcType="INTEGER" javaType="Integer" />
+		<result column="ITEMSTOCK" property="itemstock"
+			jdbcType="INTEGER" javaType="Integer" />
+		<result column="ITEMNAME" property="itemname"
+			jdbcType="VARCHAR" javaType="String" />
+		<result column="ITEMCOLOR" property="itemcolor"
+			jdbcType="VARCHAR" javaType="String" />
+	</resultMap>
+
+	<resultMap type="OrderVO" id="list">
+		
+		<result column="ORDERNUM" property="ordernum"
+			jdbcType="INTEGER" javaType="Integer" />
+		<result column="ORDERCOST" property="ordercost"
+			jdbcType="VARCHAR" javaType="String" />
+		<collection property="itemattrvo" resultMap="itemAttr" />
+	</resultMap>
+
+	<update id="member_Update" parameterType="MemberVO">
+		update member set
+		name =
+		#{name} , pw = #{pw},
+		mobile = #{mobile}
+
+		where
+		id = #{id}
+	</update>
+
+	<select id="order_list" resultMap="list">
+
+		SELECT *
+		FROM ORDERTABLE a
+		JOIN ItemAttr b
+		on a.itemcode = b.itemcode
+		WHERE a.id=#{id}
 
 
-
-
+	</select>
 
 
 
