@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.aplus.review.ReviewService;
+import com.aplus.review.ReviewVO;
+
 
 
 
@@ -25,6 +28,8 @@ public class ItemController {
 	private static final Logger logger = LoggerFactory.getLogger(ItemController.class);
 	@Autowired
 	private ItemService itemservice;
+	@Autowired
+	private ReviewService reviewservice;
 	
 	
 	
@@ -56,6 +61,8 @@ public class ItemController {
 		 model.addAttribute("detail", vo);
 		 List<ItemAttrVO> list = itemservice.itemAttr(num);
 		 model.addAttribute("list1", list);
+		 List<ReviewVO> review = reviewservice.reviewlist(num);
+		 model.addAttribute("review", review);
 		 logger.info("list"+list);
 		 logger.info("vo"+vo);
 		return "item/itemDetail";

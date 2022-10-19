@@ -42,6 +42,8 @@
                      <td style="text-align:center">
                         <input type="text" name="ordercost" value="${order.ordercost}" style="width:60px; text-align:right; border:none;" readonly>원
                      </td>
+                     <c:if test="${order.review != null}"></c:if><td><a href="/reviewCreate?item=${order.itemvo.itemnum }&order=${order.ordernum}"><button type="button" class="review"
+						>리뷰 쓰기</button></a></td>
                   </tr>
               </tbody>
             </table>

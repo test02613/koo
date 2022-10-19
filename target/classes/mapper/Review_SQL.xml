@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.Review_SQL">
+	<resultMap type="ReviewVO" id="list">
+
+		<result column="ITEMNUM" property="itemnum" jdbcType="INTEGER"
+			javaType="Integer" />
+		<result column="ID" property="id" jdbcType="VARCHAR"
+			javaType="String" />
+		<result column="REVIEWDATE" property="reviewdate"
+			jdbcType="DATE" javaType="Date" />
+		<result column="REVIEWTITLE" property="reviewtitle"
+			jdbcType="VARCHAR" javaType="String" />
+		<result column="REVIEWCONTENT" property="reviewcontent"
+			jdbcType="VARCHAR" javaType="String" />
+	</resultMap>
+	<select id="review_list" resultMap="list">
+		SELECT *
+		FROM Review
+		WHERE
+		itemnum=#{itemnum}
+	</select>
+
+	<insert id="review_Action" parameterType="ReviewVO">
+      <selectKey keyProperty="reviewnum" resultType="INTEGER"
+         order="BEFORE">
+         select REVIEWNUM_SEQ.nextval FROM DUAL
+      </selectKey>
+      insert into review values(#{itemnum}, #{id}, #{reviewnum},
+      sysdate, #{reviewtitle},
+      #{reviewcontent} , #{ordernum} )
+   </insert>
+</mapper>

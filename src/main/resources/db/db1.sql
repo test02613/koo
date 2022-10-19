@@ -31,13 +31,13 @@ create table ordertable (
    );
 
    create table review (
-      itemnum   NUMBER      not null,
-      id   varchar(255)      not null,
+      itemnum   NUMBER      ,
+      id   varchar(255)      ,
       reviewnum   NUMBER       primary key,
-      reviewdate   date      not null,
-      reviewtitle   varchar(255)      not null,
-      reviewcontent   varchar(4000)      not null,
-      reviewpw   varchar(255)      not null
+      reviewdate   date      ,
+      reviewtitle   varchar(255)      ,
+      reviewcontent   varchar(4000)     ,
+     
    );
 
    create table item (

@@ -465,22 +465,7 @@ p {
 	<br>
 
 	<div align="center">
-		<ul class="nav nav-tabs" id="myTab" role="tablist" style="width: 60%">
-			<li class="nav-item" role="presentation" style="width: 25%"><a
-				id="home-tab" href="#home3" role="tab" aria-controls="home3"
-				aria-selected="false" onClick="fnMove(1)">상세정보</a></li>
-			<li class="nav-item" role="presentation" style="width: 25%"><a
-				id="profile-tab" href="#profile3" role="tab"
-				aria-controls="profile3" aria-selected="false" onClick="fnMove(2)">상품문의</a></li>
-			<li class="nav-item" role="presentation" style="width: 25%"><a
-				id="contact-tab" href="#contact3" role="tab"
-				aria-controls="contact3" aria-selected="false" onClick="fnMove(3)">쇼핑가이드</a>
-			</li>
-			<li class="nav-item" role="presentation" style="width: 25%" id="f4"><a
-				class="nav-link active" id="contact-tab" data-toggle="tab"
-				href="#re3" role="tab" aria-controls="re3" aria-selected="true"
-				onClick="fnMove(4)">상품평</a></li>
-		</ul>
+		<h1>리뷰</h1>
 		<div class="tab-content" id="myTabContent">
 
 
@@ -490,10 +475,7 @@ p {
 
 				<div class="xans-element- xans-product xans-product-review">
 					<div class="ec-base-table typeList">
-						<br>
-						<h3>REVIEW</h3>
-						<p class="desc">상품의 사용후기를 적어주세요.</p>
-						<c:forEach var="order" items="${order}" varStatus="index">
+						
 						<table border="1" width="60%">
 							<caption></caption>
 							<colgroup>
@@ -513,18 +495,18 @@ p {
 									<th scope="col" class="displaynone">평점</th>
 								</tr>
 							</thead>
-
+						<c:forEach var="review" items="${review}" varStatus="index">
 							<tbody id="reviewList" name="reviewList">
 								<tr>
-								<td >번호</td>
-								<td >제목</td>
-								<td >작성자</td>
-								<td >작성일</td>
+								<td >${review.reviewnum }</td>
+								<td >${review.reviewtitle }</td>
+								<td >${review.id }</td>
+								<td >${review.reviewdate }</td>
 								</tr>
 							</tbody>
 
-						</table>
 						</c:forEach>
+						</table>
 					</div>
 				</div>
 

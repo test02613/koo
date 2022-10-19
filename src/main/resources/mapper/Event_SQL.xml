@@ -14,6 +14,7 @@
 
 
 	<insert id="event_insert" parameterType="EventVO">
+	
 		<selectKey keyProperty="eventnum" resultType="Integer"
 			order="BEFORE">
 			select EVENTNUM_SEQ.nextval FROM DUAL

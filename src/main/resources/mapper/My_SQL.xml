@@ -15,13 +15,23 @@
 			jdbcType="VARCHAR" javaType="String" />
 	</resultMap>
 
+	<resultMap type="ItemVO" id="item">
+
+		<result column="ITEMNUM" property="itemnum"
+			jdbcType="INTEGER" javaType="Integer" />
+	</resultMap>
+	
 	<resultMap type="OrderVO" id="list">
 		
 		<result column="ORDERNUM" property="ordernum"
 			jdbcType="INTEGER" javaType="Integer" />
 		<result column="ORDERCOST" property="ordercost"
 			jdbcType="VARCHAR" javaType="String" />
+		<result column="REVIEW" property="review"
+			jdbcType="INTEGER" javaType="Integer" />
+			
 		<collection property="itemattrvo" resultMap="itemAttr" />
+		<collection property="itemvo" resultMap="item" />
 	</resultMap>
 
 	<update id="member_Update" parameterType="MemberVO">
@@ -35,15 +45,14 @@
 	</update>
 
 	<select id="order_list" resultMap="list">
-
 		SELECT *
 		FROM ORDERTABLE a
 		JOIN ItemAttr b
 		on a.itemcode = b.itemcode
 		WHERE a.id=#{id}
-
-
 	</select>
+
+	
 
 
 

@@ -21,8 +21,8 @@ public class ReviewVO {
 	private Integer reviewnum;
 	private Date reviewdate;
 	private String reviewtitle;
-	private String reviewcontemt;
-	
+	private String reviewcontent;
+	private Integer ordernum;
 	
 	
 }
