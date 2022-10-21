@@ -13,6 +13,12 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
+	<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+<!-- JavaScript Bundle with Popper -->
+
 <%-- <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
@@ -282,7 +288,6 @@ p {
 </style>
 
 <body>
-
 	<input type="hidden" id="IDX" name="IDX" value="${detail.itemnum}">
 
 	<br>
@@ -446,80 +451,26 @@ p {
 		</div>
 	</div>
 
-	</div>
 
 
 
-	<div style="clear: both;"></div>
-
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-
-
-	<br>
-	<br>
-
-	<div align="center">
-		<h1>리뷰</h1>
-		<div class="tab-content" id="myTabContent">
-
-
-			<div class="tab-pane fade show active" id="re3" role="tabpanel"
-				aria-labelledby="contact-tab">
-				<!-- 상품평 -->
-
-				<div class="xans-element- xans-product xans-product-review">
-					<div class="ec-base-table typeList">
-						
-						<table border="1" width="60%">
-							<caption></caption>
-							<colgroup>
-								<col style="width: 70px;">
-								<col style="width: auto">
-								<col style="width: 120px;">
-								<col style="width: 120px;">
-								<col style="width: 80px;" class="displaynone">
-							</colgroup>
-							<thead>
-								<tr>
-									<th scope="col">번호</th>
-									<th scope="col">제목</th>
-									<th scope="col">작성자</th>
-									<th colspan="2" scope="col">작성일</th>
-
-									<th scope="col" class="displaynone">평점</th>
-								</tr>
-							</thead>
-						<c:forEach var="review" items="${review}" varStatus="index">
-							<tbody id="reviewList" name="reviewList">
-								<tr>
-								<td >${review.reviewnum }</td>
-								<td >${review.reviewtitle }</td>
-								<td >${review.id }</td>
-								<td >${review.reviewdate }</td>
-								</tr>
-							</tbody>
-
-						</c:forEach>
-						</table>
-					</div>
-				</div>
-
-				<div id="PAGE_NAVI"></div>
-				<input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX" />
-				<div style="margin-left: 1050px">
-					<button type="button" class="btn btn-secondary btn-sm"
-						onclick="fn_Review()">WRITE</button>
-				</div>
-
-			</div>
-		</div>
-
+	<c:forEach var="review" items="${review}" varStatus="index">
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        <c:out value="${review.reviewtitle }" />
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+<c:out value="${review.reviewcontent }" />
+      </div>
+    </div>
+  </div>
+  
+</div>
+</c:forEach>
 
 
 		<form id="commonForm" name="commonForm"></form>
@@ -533,10 +484,7 @@ p {
 	var num;
 	$('#ColorList').on("change", function() {//셀렉트 박스
 		color = $("#ColorList option:selected").val();
-		num = $
-		{
-			detail.itemnum
-		}
+		num = ${detail.itemnum}
 
 		var data = {
 			color : color,
@@ -609,23 +557,4 @@ p {
 		}
 	}
 
-	/* function order() { // 구매하기
-		if(doubleSubmitCheck()) return; // 중복클릭 방지
-
-		if(${SESSION_NO ne null}){
-			var arraycode = document.getElementsByName("BASKET_GOODS_AMOUNT");
-			var len = arraycode.length;
-			if(len==0){
-				alert("상품을 추가해 주세요.");
-			}else{
-				var comSubmit = new ComSubmit("frm");
-				comSubmit.setUrl("<c:url value='/shop/goodsOrder.do'/>");
-				comSubmit.submit();
-			}
-		}else {
-			alert("로그인 후 이용해주세요.");
-			location.href = "/stu/loginForm.do";
-		}
-	   
-	} */
 </script>

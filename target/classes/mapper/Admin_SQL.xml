@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.Admin_SQL">
+	<resultMap type="ItemVO" id="list">
+		<result column="ITEMNUM" property="itemnum" jdbcType="INTEGER"
+			javaType="Integer" />
+		<result column="ITEMNAME" property="itemname"
+			jdbcType="VARCHAR" javaType="String" />
+	</resultMap>
+	<insert id="item_Action" parameterType="ItemVO">
+		INSERT INTO item
+		values(#{itemnum} , #{itemname} , #{itemcat2} ,
+		#{itemimg} ,
+		#{itemdetailimg}, #{itemcat1},#{itemcost},#{itemstock})
+
+	</insert>
+	<select id="item_select" resultMap="list">
+
+		SELECT *
+		FROM item
+
+	</select>
+
+	<select id="item_attr" resultType="ItemVO">
+
+		SELECT *
+		FROM item
+		WHERE itemnum = #{itemnum}
+
+	</select>
+	
+	<insert id="itemattr_Action" parameterType="ItemAttrVO">
+		INSERT INTO itemattr
+		values(#{itemnum} , #{itemcode} , #{itemcost} ,
+		#{itemstock} ,
+		#{itemname}, #{itemcolor},#{itemgb} )
+
+	</insert>
+	
+	<update id="item_update" parameterType="ItemVO">
+		update item set itemname = #{itemname} , itemcat2 = #{itemcat2}  , itemimg = #{itemimg}  , itemdetailimg = #{itemdetailimg}
+		, itemcat1 = #{itemcat1} , itemcost = #{itemcost} , itemstock = #{itemstock}
+		where itemnum = #{itemnum}
+	</update>
+	
+	<select id="attr_update" resultType="ItemAttrVO">
+
+		SELECT *
+		FROM itemattr
+		WHERE itemcode = #{itemcode}
+
+	</select>
+	
+	<update id="attr_updateAction" >
+		update itemattr set  itemcost = #{itemcost}  , itemstock = #{itemstock}
+		, itemcolor = #{itemcolor}
+		where itemcode = #{itemcode}
+	</update>
+	
+</mapper>

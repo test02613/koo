@@ -10,7 +10,7 @@
 		<result column="ID" property="id" jdbcType="VARCHAR"
 			javaType="String" />
 		<result column="REVIEWDATE" property="reviewdate"
-			jdbcType="DATE" javaType="Date" />
+			 />
 		<result column="REVIEWTITLE" property="reviewtitle"
 			jdbcType="VARCHAR" javaType="String" />
 		<result column="REVIEWCONTENT" property="reviewcontent"
@@ -29,7 +29,24 @@
          select REVIEWNUM_SEQ.nextval FROM DUAL
       </selectKey>
       insert into review values(#{itemnum}, #{id}, #{reviewnum},
-      sysdate, #{reviewtitle},
+      sysdate , #{reviewtitle},
       #{reviewcontent} , #{ordernum} )
    </insert>
+   
+   <update id="orderreview_up" parameterType="OrderVO">
+		update ordertable set review = 1
+		where ordernum = #{ordernum}
+	</update>
+	
+	<select id="review_up" resultType="ReviewVO">
+		SELECT *
+		FROM Review
+		WHERE
+		reviewnum=#{reviewnum}
+	</select>
+	
+   <update id="review_upAction" parameterType="ReviewVO">
+		update REVIEW set reviewtitle = #{reviewtitle} , reviewcontent = #{reviewcontent}
+		where reviewnum = #{reviewnum}
+	</update>
 </mapper>

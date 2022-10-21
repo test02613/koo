@@ -17,19 +17,33 @@
 
 	<resultMap type="ItemVO" id="item">
 
-		<result column="ITEMNUM" property="itemnum"
-			jdbcType="INTEGER" javaType="Integer" />
+		<result column="ITEMNUM" property="itemnum" jdbcType="INTEGER"
+			javaType="Integer" />
 	</resultMap>
-	
+
+	<resultMap type="ReviewVO" id="review">
+
+		<result column="ITEMNUM" property="itemnum" jdbcType="INTEGER"
+			javaType="Integer" />
+		<result column="ID" property="id" jdbcType="VARCHAR"
+			javaType="String" />
+		<result column="REVIEWNUM" property="reviewnum"
+			jdbcType="INTEGER" javaType="Integer" />
+		<result column="REVIEWDATE" property="reviewdate" />
+		<result column="REVIEWTITLE" property="reviewtitle" />
+		<result column="REVIEWCONTENT" property="reviewcontent" />
+		<result column="ORDERNUM" property="ordernum" />
+	</resultMap>
+
 	<resultMap type="OrderVO" id="list">
-		
+
 		<result column="ORDERNUM" property="ordernum"
 			jdbcType="INTEGER" javaType="Integer" />
 		<result column="ORDERCOST" property="ordercost"
 			jdbcType="VARCHAR" javaType="String" />
-		<result column="REVIEW" property="review"
-			jdbcType="INTEGER" javaType="Integer" />
-			
+		<result column="REVIEW" property="review" jdbcType="INTEGER"
+			javaType="Integer" />
+
 		<collection property="itemattrvo" resultMap="itemAttr" />
 		<collection property="itemvo" resultMap="item" />
 	</resultMap>
@@ -47,12 +61,29 @@
 	<select id="order_list" resultMap="list">
 		SELECT *
 		FROM ORDERTABLE a
-		JOIN ItemAttr b
+		JOIN
+		ItemAttr b
 		on a.itemcode = b.itemcode
 		WHERE a.id=#{id}
 	</select>
 
-	
+	<select id="review_list" resultMap="review">
+		SELECT *
+		FROM review
+		WHERE
+		id=#{id}
+		ORDER BY
+		reviewnum
+	</select>
+
+	<update id="pointAction" parameterType="MemberVO">
+		update member set
+		point = #{point}
+
+		where
+		id = #{id}
+	</update>
+
 
 
 

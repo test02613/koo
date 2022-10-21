@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.aplus.model.MemberVO;
 import com.aplus.order.OrderVO;
+import com.aplus.review.ReviewVO;
 
 
 @Service
@@ -29,5 +30,17 @@ public class MyServiceimpl implements MyService{
 	public List<OrderVO> orderList(String id) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.orderList(id);
+	}
+
+	@Override
+	public List<ReviewVO> myreview(String id) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.myreview(id);
+	}
+
+	@Override
+	public MemberVO pointAction(MemberVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.pointAction(vo);
 	}
 }

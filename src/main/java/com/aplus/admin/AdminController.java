@@ -1,0 +1,133 @@
+package com.aplus.admin;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.aplus.controller.MemberController;
+import com.aplus.item.ItemAttrVO;
+import com.aplus.item.ItemService;
+import com.aplus.item.ItemVO;
+import com.aplus.model.MemberVO;
+import com.aplus.review.ReviewVO;
+import com.aplus.service.MemberService;
+@Controller
+public class AdminController {
+	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
+	@Autowired
+	private AdminService adminservice;
+	@Autowired
+	private ItemService itemservice;
+	@RequestMapping(value = "/admin_main", method = RequestMethod.GET)
+	public String admin_mainGET(MemberVO vo,HttpServletResponse response, HttpSession session) throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 관리자 페이지 진입");
+		response.setCharacterEncoding("UTF-8");
+
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		int admin =  (int) session.getAttribute("admin");
+		
+		
+		if(admin == 0) {
+			out.print("<script>alert('\" 보노보노 \"'); history.go(-1);</script>" );
+			logger.info("vo1"+admin);
+			out.close();
+			return "main/main";
+		}else if(admin == 1) {
+			logger.info("vo2"+vo);
+			return "admin/admin_main";
+		}else {
+			
+			return"member/login";
+		}
+	}
+	
+	@RequestMapping(value = "/iteminsert", method = RequestMethod.GET)
+	public String iteminsertGET(Model model,HttpSession session,ItemVO vo ,Integer num) throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 아이템작성 페이지 진입");
+		vo.setItemnum(num);
+		vo=adminservice.itemattr(vo);
+		model.addAttribute("item", vo);
+		return "admin/iteminsert";
+	}
+	
+	@RequestMapping(value = "/iteminsertAction", method = RequestMethod.POST)
+	public String iteminsertActionGET(Model model,HttpSession session,ItemVO vo) throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 아이템작성 진행");
+		adminservice.iteminsertAction(vo);
+		return "redirect:/admin_main";
+	}
+
+	@RequestMapping(value = "/itemupdateAction", method = RequestMethod.POST)
+	public String itemupdateActionGET(Model model,HttpSession session,ItemVO vo ,Integer num) throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 아이템작성 진행");
+		vo.setItemnum(num);
+		adminservice.itemupdateAction(vo);
+		return "redirect:/admin_main";
+	}
+	
+	
+	@RequestMapping(value = "/itemselect", method = RequestMethod.GET)
+	public String itemselectGET(Model model,HttpSession session,ItemVO vo,Integer num) throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 아이템선택 페이지 진입");
+		model.addAttribute("num", num);
+		List<ItemVO> list = adminservice.itemselect(vo);
+		model.addAttribute("list", list);
+		logger.info("vo"+vo);
+		return "admin/itemselect";
+	}
+	
+	@RequestMapping(value = "/attrlist", method = RequestMethod.GET)
+	public String attrlistGET(Model model,HttpSession session,ItemAttrVO vo,Integer num) throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 아이템작성 페이지 진입");
+		 List<ItemAttrVO> list = itemservice.itemAttr(num);
+		model.addAttribute("list", list);
+		
+		return "admin/attrlist";
+	}
+	
+	@RequestMapping(value = "/attrinsert", method = RequestMethod.GET)
+	public String attrinsertGET(Model model,HttpSession session,ItemVO vo,Integer num,Integer code,ItemAttrVO attr) throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 아이템작성 페이지 진입");
+		attr.setItemcode(code);
+		if(code == null) {
+			vo.setItemnum(num);
+			vo=adminservice.itemattr(vo);
+			model.addAttribute("item", vo);
+		}else {
+			attr = adminservice.attrupdate(attr);
+			model.addAttribute("item", attr);
+		}
+		
+		
+		return "admin/attrinsert";
+	}
+	
+	@RequestMapping(value = "/itemattrAction", method = RequestMethod.POST)
+	public String attrinsertActionGET(Model model,HttpSession session,ItemAttrVO vo) throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 아이템작성 진행");
+		adminservice.itemattrAction(vo);
+		return "redirect:/admin_main";
+	}
+	
+	@RequestMapping(value = "/attrupdateAction", method = {RequestMethod.POST,RequestMethod.GET})
+	public String attrupdateGET(Model model,HttpSession session,ItemAttrVO vo,Integer num) throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 속성 진행 페이지 진입");
+		adminservice.attrupdateAction(vo);
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> wlsgod 페이지 진입");
+		
+		return "redirect:/admin_main";
+	}
+}

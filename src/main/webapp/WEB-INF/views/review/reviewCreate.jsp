@@ -1,71 +1,107 @@
-<%@page contentType="text/html; charset=EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%><!-- cÅÂ±× »ç¿ë -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%><!-- cíƒœê·¸ ì‚¬ìš© -->
 <html>
 <head>
 <script src="https://code.jquery.com/jquery-3.4.1.js"
    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
    crossorigin="anonymous"></script>
-<title>»õ±Ûµî·Ï</title>
+<title>ìƒˆê¸€ë“±ë¡</title>
 </head>
 <body>
 
 	<center>
-	
+		<h1>${detail.eventnum}</h1>
 		<a href="/logout">Log-out</a>
 		<hr>
 		<form id="eventCreate_form" method="post">
-			<table border="1" cellpadding="0" cellspacing="0">
-				<tr>
-				<td>
-				<input type="hidden" name = "ordernum" value="${order}">
-				<input type="hidden" name = "itemnum" value="${item}">
-				</td>
-				</tr>
-				
-				<tr>
-					<td bgcolor="orange" width="70">Á¦¸ñ</td>
-					<td align="left"><input type="text" name="reviewtitle" /></td>
-				</tr>
-				<tr>
-					<td bgcolor="orange">³»¿ë</td>
-					<td align="left"><textarea name="reviewcontent" cols="40" rows="10"></textarea></td>
-				
-					
-				</tr>
-				
-				
-				
-					
-				
-				
-			</table>
-			
-			 <input type="button" class="eventCreate_button" value="µî·ÏÇÏ±â">
-			 
-			
-		</form>
+         <table border="1" cellpadding="0" cellspacing="0">
+            <!-- <tr>
+               <td bgcolor="orange">ê¸€ë²ˆí˜¸</td>
+               <td align="left"><input type="number" name="eventnum" /></td>
+            </tr> -->
+            <c:if test="${list.reviewnum==null}">
+            <input type="hidden" name="itemnum" value="${item }" />
+            <input type="hidden" id = ordernum name="ordernum" value="${order }" />
+            <tr>
+               <td bgcolor="orange" width="70">ì œëª©</td>
+               <td align="left"><input type="text" name="reviewtitle" /></td>
+            </tr>
+            <tr>
+               <td bgcolor="orange">ë‚´ìš©</td>
+               <td align="left"><textarea name="reviewcontent" cols="40" rows="10"></textarea></td>
+            
+               
+            </tr>
+            </c:if>
+            <c:if test="${list.reviewnum!=null}">
+            
+            <tr>
+               <td bgcolor="orange" width="70">ì œëª©</td>
+               <td align="left"><input type="text" id = ordernum name="reviewtitle" value="${list.reviewtitle}"/></td>
+            </tr>
+            <tr>
+               <td bgcolor="orange">ë‚´ìš©</td>
+               <td align="left"><textarea name="reviewcontent" cols="40" rows="10">${list.reviewcontent}</textarea></td>
+            
+               
+            </tr>
+            </c:if>
+         </table>
+         <c:if test="${list.reviewnum==null}">
+          <input type="button" class="eventCreate_button" value="ë“±ë¡í•˜ê¸°">
+          </c:if>
+          <c:if test="${list.reviewnum!=null }">
+          <input type="button" class="eventUpdate_button" value="ìˆ˜ì •í•˜ê¸°">
+          </c:if>
+      </form>
 		<hr>
-		<a href="/event">±Û ¸ñ·Ï °¡±â</a>
+		<a href="/event">ê¸€ ëª©ë¡ ê°€ê¸°</a>
 	</center>
 <script>
- $(document).ready(function() {
-         // »õ±Û µî·Ï ¹öÆ°
-         $(".eventCreate_button").click(function() {
-            $("#eventCreate_form").attr("action", "/reviewCreateAction");
-            $("#eventCreate_form").submit();
+var a =document.getElementById("ordernum").value
 
-         })
-      })
-/*  $(document).ready(function() {
-         // »õ±Û µî·Ï ¹öÆ°
-         $(".eventUpdate_button").click(function() {
-            $("#eventCreate_form").attr("action", '${path}/eventUpdateAction?num=${detail.eventnum}');
-            $("#eventCreate_form").submit();
+$(document).ready(function() {
+    // ìƒˆê¸€ ë“±ë¡ ë²„íŠ¼
+    $(".eventCreate_button").click(function() {
+       $("#eventCreate_form").attr("action", "/reviewCreateAction");
+       $.ajax({
+       type : "get",
+       url : "/orderreview",
+       data : {
+          num : a
+       },
+       async : false,//ì „ì—­ ë³€ìˆ˜ ë³´ë‚´ê¸°
+       dataType : "json",
+       success : function(result) {
+          code = result;
 
-         })
-      }) */
+          console.log("í™•ì¸ : " + result);
+          if (result) {
+             /* alert("ì™„ë£Œ"+code);  */
+             return code;
+          } else {
+             //alert("ì „ì†¡ëœ ê°’ ì—†ìŒ"+result);  
+          }
+       },
+       error : function() {
+          // alert("ì—ëŸ¬Â ë°œìƒ"+result); 
+       }
+
+    });//ì•„ì‘ìŠ¤ ë
+       $("#eventCreate_form").submit();
+
+    })
+ })
+$(document).ready(function() {
+    // ìƒˆê¸€ ë“±ë¡ ë²„íŠ¼
+    $(".eventUpdate_button").click(function() {
+       $("#eventCreate_form").attr("action", '${path}/reviewUpdateAction?num=${list.reviewnum}');
+       $("#eventCreate_form").submit();
+
+    })
+ }) 
 </script>
 </body>
 </html>
