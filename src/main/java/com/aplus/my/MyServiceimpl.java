@@ -43,4 +43,10 @@ public class MyServiceimpl implements MyService{
 		// TODO Auto-generated method stub
 		return dao.pointAction(vo);
 	}
+
+	@Override
+	public MemberVO memberleave(MemberVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.memberleave(vo);
+	}
 }

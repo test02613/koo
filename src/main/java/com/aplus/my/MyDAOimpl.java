@@ -43,4 +43,10 @@ public class MyDAOimpl implements MyDAO{
 		// TODO Auto-generated method stub
 		return sql.selectOne("mapper.My_SQL.pointAction", vo);
 	}
+
+	@Override
+	public MemberVO memberleave(MemberVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return sql.selectOne("mapper.My_SQL.member_leave",vo);
+	}
 }

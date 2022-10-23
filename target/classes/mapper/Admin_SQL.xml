@@ -36,6 +36,19 @@
 		<collection property="itemattrvo" resultMap="itemAttr" />
 	</resultMap>
 
+	<resultMap type="ReviewVO" id="review">
+		<result column="ITEMNUM" property="itemnum" jdbcType="INTEGER"
+			javaType="Integer" />
+		<result column="ID" property="id" jdbcType="VARCHAR"
+			javaType="String" />
+		<result column="REVIEWNUM" property="reviewnum"
+			jdbcType="INTEGER" javaType="Integer" />
+		<result column="REVIEWDATE" property="reviewdate" />
+		<result column="REVIEWTITLE" property="reviewtitle" />
+		<result column="REVIEWCONTENT" property="reviewcontent" />
+		<result column="ORDERNUM" property="ordernum" />
+	</resultMap>
+
 	<insert id="item_Action" parameterType="ItemVO">
 		INSERT INTO item
 		values(#{itemnum} , #{itemname} , #{itemcat2} ,
@@ -130,5 +143,18 @@
 		update ordertable set state = #{state}
 		where ordernum = #{ordernum}
 	</update>
+	
+	<select id="admin_review" resultMap="review">
+
+		SELECT *
+		FROM review
+
+
+	</select>
+	
+	<delete id="reviewout">
+		delete from review
+		where reviewnum = #{reviewnum}
+	</delete>
 
 </mapper>

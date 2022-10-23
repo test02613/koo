@@ -6,6 +6,7 @@ import com.aplus.item.ItemAttrVO;
 import com.aplus.item.ItemVO;
 import com.aplus.model.MemberVO;
 import com.aplus.order.OrderVO;
+import com.aplus.review.ReviewVO;
 
 public interface AdminService {
 
@@ -33,4 +34,8 @@ public interface AdminService {
 	public List<OrderVO> admin_order() throws Exception;
 	
 	public OrderVO state_selcted(OrderVO vo) throws Exception;
+	
+	public List<ReviewVO> admin_review(ReviewVO vo) throws Exception;
+	
+	public ReviewVO reviewout(Integer num) throws Exception;
 }

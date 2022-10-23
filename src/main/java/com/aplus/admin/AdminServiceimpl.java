@@ -9,6 +9,7 @@ import com.aplus.item.ItemAttrVO;
 import com.aplus.item.ItemVO;
 import com.aplus.model.MemberVO;
 import com.aplus.order.OrderVO;
+import com.aplus.review.ReviewVO;
 
 
 @Service
@@ -85,5 +86,17 @@ public class AdminServiceimpl implements AdminService {
 	public OrderVO state_selcted(OrderVO vo) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.state_selcted(vo);
+	}
+
+	@Override
+	public List<ReviewVO> admin_review(ReviewVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.admin_review(vo);
+	}
+
+	@Override
+	public ReviewVO reviewout(Integer num) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.reviewout(num);
 	}
 }

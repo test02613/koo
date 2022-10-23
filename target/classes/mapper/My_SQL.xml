@@ -58,6 +58,14 @@
 		where
 		id = #{id}
 	</update>
+	
+	<update id="member_leave" parameterType="MemberVO">
+		update member set
+		leave=1
+
+		where
+		id = #{id}
+	</update>
 
 	<select id="order_list" resultMap="list">
 		SELECT *

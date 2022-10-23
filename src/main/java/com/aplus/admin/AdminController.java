@@ -177,4 +177,18 @@ public class AdminController {
 		vo.setState(state);
 		adminservice.state_selcted(vo);
 	}
+	@RequestMapping(value = "/reviewadmin", method = {RequestMethod.POST,RequestMethod.GET})
+	public String reviewadminGET(Model model,HttpSession session,ReviewVO vo) throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 상태 페이지 진입");
+		List<ReviewVO> list =adminservice.admin_review(vo);
+		
+		model.addAttribute("list", list);
+		return "admin/admin_review";
+	}
+	@RequestMapping(value = "/reviewout", method = {RequestMethod.POST,RequestMethod.GET})
+	public String reviewoutGET(Model model,HttpSession session,ReviewVO vo,Integer num) throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 상태 페이지 진입");
+		adminservice.reviewout(num);
+		return "redirect:/reviewadmin";
+	}
 }

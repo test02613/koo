@@ -13,6 +13,8 @@ public interface MyDAO {
 
 	public MemberVO update(MemberVO vo) throws Exception;
 	
+	public MemberVO memberleave(MemberVO vo) throws Exception;
+	
 	public List<OrderVO> orderList(String id) throws Exception;
 	
 	public  List<ReviewVO> myreview(String id) throws Exception;

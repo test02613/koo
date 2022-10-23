@@ -65,7 +65,7 @@ text-align:center;
 						</tr>
 						</c:if>
 						<c:if test="${list.leave ==1 }">
-						<tr style="background-color: lihtgray;">
+						<tr style="background-color: lightgray;">
 							<td id="title" style="text-decoration: none;"><c:out  value="${list.id}" /></td>
 							<td  ><c:out   value="${list.name}" /></td>
 							<td style="text-decoration: none;"><c:out   value="${list.mobile}" /></td>

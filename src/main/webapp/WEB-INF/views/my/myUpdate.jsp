@@ -27,7 +27,7 @@
 				
 </table>
 				 <input type="button" class="update_button" value="변경">
-				
+				<a href="/memberleave"><button type="button">탈퇴</button></a>
 </form>
 <script>
 $(document).ready(function() {

@@ -10,6 +10,7 @@ import com.aplus.item.ItemAttrVO;
 import com.aplus.item.ItemVO;
 import com.aplus.model.MemberVO;
 import com.aplus.order.OrderVO;
+import com.aplus.review.ReviewVO;
 @Repository
 public class AdminDAOimpl implements AdminDAO{
 	
@@ -85,5 +86,18 @@ public class AdminDAOimpl implements AdminDAO{
 	public OrderVO state_selcted(OrderVO vo) throws Exception {
 		// TODO Auto-generated method stub
 		return sql.selectOne("mapper.Admin_SQL.state_selcted", vo);
+	}
+
+	@Override
+	public List<ReviewVO> admin_review(ReviewVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return sql.selectList("mapper.Admin_SQL.admin_review");
+	
+	}
+
+	@Override
+	public ReviewVO reviewout(Integer num) throws Exception {
+		// TODO Auto-generated method stub
+		return sql.selectOne("mapper.Admin_SQL.reviewout", num);
 	}
 }

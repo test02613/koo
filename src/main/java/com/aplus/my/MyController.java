@@ -55,6 +55,16 @@ public class MyController {
 		return "redirect:/login";
 	}
 	
+	@RequestMapping(value = "/memberleave", method = {RequestMethod.GET,RequestMethod.POST})
+	public String memberleaveGET(MemberVO vo,HttpSession session,Model model) throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 정보수정 진행 페이지 진입");
+		String id = (String) session.getAttribute("id");//세션 id가져오기
+		vo.setId(id);
+		
+		myservice.memberleave(vo);
+		return "redirect:/login";
+	}
+	
 	@RequestMapping(value = "/myorder", method = {RequestMethod.GET,RequestMethod.POST})
 	public String myorderGET(HttpSession session,Model model,OrderVO vo) throws Exception {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 주문조회 페이지 진입");
