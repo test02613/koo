@@ -9,6 +9,13 @@
 		<result column="ITEMNAME" property="itemname"
 			jdbcType="VARCHAR" javaType="String" />
 	</resultMap>
+
+	<resultMap type="MemberVO" id="mem">
+		<result column="ID" property="id" />
+		<result column="NAME" property="name" />
+		<result column="MOBILE" property="mobile" />
+		<result column="LEAVE" property="leave" />
+	</resultMap>
 	<insert id="item_Action" parameterType="ItemVO">
 		INSERT INTO item
 		values(#{itemnum} , #{itemname} , #{itemcat2} ,
@@ -57,6 +64,19 @@
 		update itemattr set  itemcost = #{itemcost}  , itemstock = #{itemstock}
 		, itemcolor = #{itemcolor}
 		where itemcode = #{itemcode}
+	</update>
+	
+	<select id="member_admin" resultMap="mem">
+
+		SELECT *
+		FROM member
+		
+
+	</select>
+	
+		<update id="admin_black" parameterType="MemberVO">
+		update member set  leave = 2 
+		where id = #{id}
 	</update>
 	
 </mapper>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.aplus.item.ItemAttrVO;
 import com.aplus.item.ItemVO;
+import com.aplus.model.MemberVO;
 
 public interface AdminService {
 
@@ -21,4 +22,8 @@ public interface AdminService {
 	public ItemAttrVO attrupdate(ItemAttrVO vo) throws Exception;
 	
 	public ItemAttrVO attrupdateAction(ItemAttrVO vo) throws Exception;
+	
+	public List<MemberVO> adminmember() throws Exception;
+	
+	public MemberVO black(MemberVO vo) throws Exception;
 }

@@ -130,4 +130,20 @@ public class AdminController {
 		
 		return "redirect:/admin_main";
 	}
+	
+	@RequestMapping(value = "/memberadmin", method = RequestMethod.GET)
+	public String adminmemberGET(Model model,HttpSession session,MemberVO vo ,Integer num) throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 아이템작성 페이지 진입");
+		List<MemberVO> list=adminservice.adminmember();
+		
+		model.addAttribute("list", list);
+		return "admin/adminmember";
+	}
+	@RequestMapping(value = "/black", method = {RequestMethod.POST,RequestMethod.GET})
+	public String blackGET(Model model,HttpSession session,MemberVO vo,String id) throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 상태 페이지 진입");
+		vo.setId(id);
+		adminservice.black(vo);
+		return "redirect:/admin_main";
+	}
 }

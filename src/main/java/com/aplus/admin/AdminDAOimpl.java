@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.aplus.item.ItemAttrVO;
 import com.aplus.item.ItemVO;
+import com.aplus.model.MemberVO;
 @Repository
 public class AdminDAOimpl implements AdminDAO{
 	
@@ -53,5 +54,17 @@ public class AdminDAOimpl implements AdminDAO{
 	public ItemAttrVO attrupdateAction(ItemAttrVO vo) throws Exception {
 		// TODO Auto-generated method stub
 		return sql.selectOne("mapper.Admin_SQL.attr_updateAction", vo);
+	}
+
+	@Override
+	public List<MemberVO> adminmember() throws Exception {
+		// TODO Auto-generated method stub
+		return sql.selectList("mapper.Admin_SQL.member_admin");
+	}
+
+	@Override
+	public MemberVO black(MemberVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return sql.selectOne("mapper.Admin_SQL.admin_black", vo);
 	}
 }

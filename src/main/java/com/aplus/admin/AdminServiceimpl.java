@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.aplus.item.ItemAttrVO;
 import com.aplus.item.ItemVO;
+import com.aplus.model.MemberVO;
 
 
 @Service
@@ -53,5 +54,17 @@ public class AdminServiceimpl implements AdminService {
 	public ItemAttrVO attrupdateAction(ItemAttrVO vo) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.attrupdateAction(vo);
+	}
+
+	@Override
+	public List<MemberVO> adminmember() throws Exception {
+		// TODO Auto-generated method stub
+		return dao.adminmember();
+	}
+
+	@Override
+	public MemberVO black(MemberVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.black(vo);
 	}
 }
