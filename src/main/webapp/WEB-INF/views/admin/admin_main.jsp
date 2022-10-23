@@ -12,6 +12,7 @@
 <h1><a href="/itemselect?num=2">상품옵션등록</a></h1>
 <h1><a href="/itemselect?num=3">상품옵션수정</a></h1>
 <h1><a href="/memberadmin">회원관리</a></h1>
+<h1><a href="/admin_order">주문관리</a></h1>
 <h1><a href="/reviewadmin">리뷰관리</a></h1>
 </body>
 </html>

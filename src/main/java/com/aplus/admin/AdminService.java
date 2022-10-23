@@ -5,6 +5,7 @@ import java.util.List;
 import com.aplus.item.ItemAttrVO;
 import com.aplus.item.ItemVO;
 import com.aplus.model.MemberVO;
+import com.aplus.order.OrderVO;
 
 public interface AdminService {
 
@@ -26,4 +27,10 @@ public interface AdminService {
 	public List<MemberVO> adminmember() throws Exception;
 	
 	public MemberVO black(MemberVO vo) throws Exception;
+	
+	public MemberVO alive(MemberVO vo) throws Exception;
+	
+	public List<OrderVO> admin_order() throws Exception;
+	
+	public OrderVO state_selcted(OrderVO vo) throws Exception;
 }

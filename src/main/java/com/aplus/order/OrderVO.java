@@ -30,6 +30,7 @@ public class OrderVO {
    private String name;
    private Integer itemcode;
    private Integer review;
+   private String state;
    
    private ItemAttrVO itemattrvo;
    private ItemVO itemvo;

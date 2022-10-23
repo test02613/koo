@@ -9,7 +9,7 @@
 	   </selectKey>
 	      INSERT INTO ORDERTABLE values(#{id} , #{ordernum} , 0,
 	      0, #{ordercost}, sysdate, 0, #{postcode},
-	      #{address}, #{addressdetail}, 0, #{name}, #{itemcode} )
+	      #{address}, #{addressdetail}, 0, #{name}, #{itemcode},"결제완료" )
 	</insert>
 	
 	<select id="order_item" resultType="ItemAttrVO">
@@ -31,4 +31,6 @@
 		update member set point = #{point} 
 		where id = #{id}
 	</update>
+	
+	
 </mapper>

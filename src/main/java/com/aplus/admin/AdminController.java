@@ -15,12 +15,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.aplus.controller.MemberController;
 import com.aplus.item.ItemAttrVO;
 import com.aplus.item.ItemService;
 import com.aplus.item.ItemVO;
 import com.aplus.model.MemberVO;
+import com.aplus.order.OrderVO;
 import com.aplus.review.ReviewVO;
 import com.aplus.service.MemberService;
 @Controller
@@ -101,14 +104,16 @@ public class AdminController {
 	@RequestMapping(value = "/attrinsert", method = RequestMethod.GET)
 	public String attrinsertGET(Model model,HttpSession session,ItemVO vo,Integer num,Integer code,ItemAttrVO attr) throws Exception {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 아이템작성 페이지 진입");
-		attr.setItemcode(code);
 		if(code == null) {
 			vo.setItemnum(num);
 			vo=adminservice.itemattr(vo);
 			model.addAttribute("item", vo);
+			model.addAttribute("num", 1);
 		}else {
+			attr.setItemcode(code);
 			attr = adminservice.attrupdate(attr);
 			model.addAttribute("item", attr);
+			model.addAttribute("num", 2);
 		}
 		
 		
@@ -144,6 +149,32 @@ public class AdminController {
 		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 상태 페이지 진입");
 		vo.setId(id);
 		adminservice.black(vo);
-		return "redirect:/admin_main";
+		return "redirect:/memberadmin";
+	}
+	
+	@RequestMapping(value = "/alive", method = {RequestMethod.POST,RequestMethod.GET})
+	public String aliveGET(Model model,HttpSession session,MemberVO vo,String id) throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 상태 페이지 진입");
+		vo.setId(id);
+		adminservice.alive(vo);
+		return "redirect:/memberadmin";
+	}
+	
+	@RequestMapping(value = "/admin_order", method = {RequestMethod.POST,RequestMethod.GET})
+	public String admin_orderGET(Model model,HttpSession session,OrderVO vo) throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 상태 페이지 진입");
+		List<OrderVO> list =adminservice.admin_order();
+		
+		model.addAttribute("list", list);
+		return "admin/admin_order";
+	}
+	
+	@RequestMapping(value = "/state_selcted", method = { RequestMethod.GET, RequestMethod.POST })
+	@ResponseBody
+	public void state_selctedGET(OrderVO vo, Model model,@RequestParam("state") String state ,@RequestParam("num") Integer num) throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  진입");
+		vo.setOrdernum(num);
+		vo.setState(state);
+		adminservice.state_selcted(vo);
 	}
 }

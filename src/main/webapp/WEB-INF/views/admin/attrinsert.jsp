@@ -13,7 +13,7 @@
 <body>
 <form id="update" method="post">
 <table>
-		<c:if test="${item.itemcode ==null }">
+		<c:if test="${num ==1 }">
  				<tr>
 					<td >번호</td>
 					<td align="left"><input type="text" name="itemnum" value="${item.itemnum }" readonly="readonly"/></td>
@@ -39,7 +39,7 @@
 					<td align="left"><input type="text" name="itemstock" /></td>
 				</tr>
 				</c:if>
-			<c:if test="${item.itemcode !=null }">
+			<c:if test="${num ==2 }">
 				<tr>
 					<td>번호</td>
 					<td align="left"><input type="text" name="itemnum"
@@ -69,8 +69,8 @@
 			</c:if>
 
 		</table>
-				<c:if test="${item.itemcode ==null }"> <input type="button" class="insert_button" value="등록"></c:if>
-				<c:if test="${item.itemcode !=null }"> <input type="button" class="update_button" value="1등록"></c:if>
+				<c:if test="${num ==1 }"> <input type="button" class="insert_button" value="등록"></c:if>
+				<c:if test="${num ==2 }"> <input type="button" class="update_button" value="1등록"></c:if>
 				
 </form>
 <script>

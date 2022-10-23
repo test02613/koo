@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.aplus.item.ItemAttrVO;
 import com.aplus.item.ItemVO;
 import com.aplus.model.MemberVO;
+import com.aplus.order.OrderVO;
 @Repository
 public class AdminDAOimpl implements AdminDAO{
 	
@@ -66,5 +67,23 @@ public class AdminDAOimpl implements AdminDAO{
 	public MemberVO black(MemberVO vo) throws Exception {
 		// TODO Auto-generated method stub
 		return sql.selectOne("mapper.Admin_SQL.admin_black", vo);
+	}
+
+	@Override
+	public MemberVO alive(MemberVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return sql.selectOne("mapper.Admin_SQL.admin_alive", vo);
+	}
+
+	@Override
+	public List<OrderVO> admin_order() throws Exception {
+		// TODO Auto-generated method stub
+		return sql.selectList("mapper.Admin_SQL.admin_order");
+	}
+
+	@Override
+	public OrderVO state_selcted(OrderVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return sql.selectOne("mapper.Admin_SQL.state_selcted", vo);
 	}
 }

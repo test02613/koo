@@ -61,7 +61,7 @@ text-align:center;
 							<td  ><c:out   value="${list.name}" /></td>
 							<td style="text-decoration: none;"><c:out   value="${list.mobile}" /></td>
 							<td>생존</td>
-							<td><a href="/black?id=${list.id}"><button>블랙</button></a></td>
+							<td><a href='${path}/black?id=${list.id}'><button type="button">블랙</button></a></td>
 						</tr>
 						</c:if>
 						<c:if test="${list.leave ==1 }">
@@ -70,6 +70,7 @@ text-align:center;
 							<td  ><c:out   value="${list.name}" /></td>
 							<td style="text-decoration: none;"><c:out   value="${list.mobile}" /></td>
 							<td>탈퇴</td>
+							<td><a href='${path}/alive?id=${list.id}'><button type="button">살리기</button></a></td>
 						</tr>
 						</c:if>
 						<c:if test="${list.leave ==2 }">
@@ -78,6 +79,7 @@ text-align:center;
 							<td  ><c:out   value="${list.name}" /></td>
 							<td style="text-decoration: none;"><c:out   value="${list.mobile}" /></td>
 							<td>블랙</td>
+							<td><a href='${path}/alive?id=${list.id}'><button type="button">살리기</button></a></td>
 						</tr>
 						</c:if>
 					</c:forEach>

@@ -18,12 +18,14 @@
             <col width="10%" />
             <col width="13%" />
             <col width="13%" />
+            <col width="13%" />
          </colgroup>
               <thead>
                 <tr>
                   <th colspan="2" style="text-align:center">상품명/옵션</th>
                   <th></th>
                   <th style="text-align:center">주문금액</th>
+                  <th style="text-align:center">주문 상태</th>
                 </tr>
               </thead>
               <tbody>
@@ -42,6 +44,7 @@
                      <td style="text-align:center">
                         <input type="text" name="ordercost" value="${order.ordercost}" style="width:60px; text-align:right; border:none;" readonly>원
                      </td>
+                     <td style="width:60px; text-align:right; border:none;" >${order.state }</td>
                      <c:if test="${order.review == null}"><td><a href="/reviewCreate?item=${order.itemvo.itemnum }&order=${order.ordernum}"><button type="button" class="review"
 						>리뷰 쓰기</button></a></td></c:if>
                   </tr>
