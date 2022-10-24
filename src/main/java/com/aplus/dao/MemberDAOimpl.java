@@ -59,6 +59,13 @@ public class MemberDAOimpl implements MemberDAO {
 		// TODO Auto-generated method stub
 		return sql.selectOne("mapper.Member_SQL.updatePw",vo);
 	}
+
+
+	@Override
+	public MemberVO login(MemberVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return sql.selectOne("mapper.Member_SQL.login",vo);
+	}
 	
 	
 	

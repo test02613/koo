@@ -19,6 +19,8 @@ public interface MemberDAO {
 	public String findPw(MemberVO vo) throws Exception;
 	
 	public String updatePw(MemberVO vo) throws Exception;
+
+	public MemberVO login(MemberVO vo) throws Exception;
 	
 
 }

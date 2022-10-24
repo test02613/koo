@@ -139,6 +139,7 @@
 
 	</select>
 	
+	
 	<update id="state_selcted" >
 		update ordertable set state = #{state}
 		where ordernum = #{ordernum}

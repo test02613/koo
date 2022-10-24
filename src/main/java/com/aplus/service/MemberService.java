@@ -24,6 +24,8 @@ public interface MemberService {
 	public String updatePw(HttpServletResponse response, MemberVO vo) throws Exception;
 
 	/*public int loginAction_admin1(MemberVO vo);*/
+	public MemberVO login(MemberVO vo) throws Exception;
+
 	
 
 }

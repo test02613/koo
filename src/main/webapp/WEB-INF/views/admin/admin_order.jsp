@@ -46,6 +46,21 @@ text-align:center;
 	<div class="wrapper">
 		<div id="wrapper">
 		<h1>아이템</h1>
+		<select name="order_num" id="order_num"class='order_num' style="width: 200px; height: 30px;">
+							<option value="">==주문 번호 ==</option>
+							<c:forEach items="${list}" var="list">
+							<option value="${list.ordernum}">${list.ordernum}</option>
+							</c:forEach>
+				</select>
+				<select name="order_state" id="order_state"
+							class='order_state' style="width: 200px; height: 30px;">
+								<option value="">==주문 상태 변경 ==</option>
+										<option value="결제 완료">결제 완료</option>
+										<option value="배송중">배송중</option>
+										<option value="배송완료">배송완료</option>
+
+						</select>
+						<button id = "change" class ="change" >변경</button>
 			<table class="table" >
 				<thead class="table-dark">
 					<tr >
@@ -54,27 +69,16 @@ text-align:center;
 						<th id="title" width="100"scope="col">아이디</th>
 						<th id="title" width="100"scope="col">이름</th>
 						<th id="title" width="100"scope="col">주문 상태</th>
-						<th id="title" width="200"scope="col">주문 상태 변경 </th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach items="${list}" var="list">
-						<tr >
-							<td id="title"  style="text-decoration: none;">${list.ordernum}<input type="hidden" name="ordernum" id="ordernum" value="${list.ordernum}"></td>
+						<tr onClick="location.href='/admin_orderd?num=${list.ordernum}'"style="cursor:pointer;">
+							<td id="title"  style="text-decoration: none;">${list.ordernum}</td>
 							<td  ><c:out   value="${list.itemattrvo.itemname}/${list.itemattrvo.itemcolor}" /></td>
 							<td style="text-decoration: none;"><c:out  value="${list.id}" /></td>
 							<td style="text-decoration: none;"><c:out   value="${list.name}" /></td>
 							<td style="text-decoration: none;"><c:out   value="${list.state}" /></td>
-							<td style="text-decoration: none;"><select name="order_state" id="order_state"
-							class='order_state' style="width: 600px; height: 30px;">
-								<option value="">==주문 상태 변경 ==</option>
-										<option value="결제 완료">결제 완료</option>
-										<option value="배송중">배송중</option>
-										<option value="배송완료">배송완료</option>
-
-						</select>
-						<button id = "change" class ="change?num=${list.ordernum}" >변경</button>
-						</td>
 						</tr>
 					</c:forEach>
 					
@@ -90,32 +94,31 @@ text-align:center;
 		crossorigin="anonymous"></script>
 		
 </body>
-</html>
-<script type="text/javascript">
-$(document).ready(function() {
+ <script type="text/javascript">
+$(document).ready(function() {order_num
 $("#change").on("click", function() { // 구매 버튼
-	
 	$.ajax({
 		type : "post",
 		url : "/state_selcted",
 		data : {state:$("#order_state option:selected").val(),
-				num:document.getElementById("ordernum").value},
+				num:$("#order_num option:selected").val()},
 		dataType : "json",
 		success : function(result) {
 			var a = result;
 			if (result) {
-				alert("완료"+a); 
+				/* alert("완료"+a);  */
 			} else {
-				  alert("전송된 값 없음"+result);  
+				  /* alert("전송된 값 없음"+result);   */
 			}
 		},
 		error : function() {
-			 alert("에러 발생"+result); 
+			 /* alert("에러 발생"+result);  */
 		}
 
 	});//아작스 끝
 	
 });
 })
-</script>
+</script> 
+</html>
 

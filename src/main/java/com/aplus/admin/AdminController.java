@@ -172,7 +172,7 @@ public class AdminController {
 	@RequestMapping(value = "/state_selcted", method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
 	public void state_selctedGET(OrderVO vo, Model model,@RequestParam("state") String state ,@RequestParam("num") Integer num) throws Exception {
-		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  진입");
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  상태 진입");
 		vo.setOrdernum(num);
 		vo.setState(state);
 		adminservice.state_selcted(vo);

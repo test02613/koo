@@ -51,6 +51,7 @@ h1 {
 					<col width="*" />
 					<col width="10%" />
 					<col width="6%" />
+					<col width="6%" />
 				</colgroup>
 				<thead class="table-dark">
 					<tr>
@@ -74,6 +75,8 @@ h1 {
 									value="${review.reviewdate}" /></td>
 							<td><a href="/reviewUpdate?num=${review.reviewnum}"><button
 										type="button" class="review">수정</button></a></td>
+							<td><a href="/myreviewout?num=${review.reviewnum}"><button
+										type="button" class="review">삭제</button></a></td>
 						</tr>
 
 					</c:forEach>

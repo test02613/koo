@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.aplus.admin.AdminService;
 import com.aplus.controller.MemberController;
 import com.aplus.model.MemberVO;
 import com.aplus.order.OrderVO;
@@ -23,6 +24,8 @@ public class MyController {
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	@Autowired
 	private MyService myservice;
+	@Autowired
+	private AdminService adminservice;
 	
 	@RequestMapping(value = "/mymain", method = RequestMethod.GET)
 	public String mymainGET(MemberVO vo,HttpSession session,Model model) throws Exception {
@@ -106,6 +109,12 @@ public class MyController {
 		List<ReviewVO> list=myservice.myreview(id);
 		model.addAttribute("review", list);
 		return "my/myReview";
+	}
+	@RequestMapping(value = "/myreviewout", method = {RequestMethod.GET,RequestMethod.POST})
+	public String myreviewoutGET(HttpSession session,Model model , ReviewVO vo,Integer num) throws Exception {
+		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 리뷰관리 페이지 진입");
+		adminservice.reviewout(num);
+		return "redirect:/myreview";
 	}
 	@RequestMapping(value = "/myqna", method = {RequestMethod.GET,RequestMethod.POST})
 	public String myqnaGET() {

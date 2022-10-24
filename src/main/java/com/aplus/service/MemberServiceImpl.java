@@ -113,6 +113,12 @@ public class MemberServiceImpl implements MemberService {
 		
 		return pw;
 	}
+
+	@Override
+	public MemberVO login(MemberVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.login(vo);
+	}
 	}
 
 

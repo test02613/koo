@@ -52,7 +52,7 @@ public class MemberVO {
    private int point;
    
    //회원 탈퇴
-   private String leave;   
+   private int leave;   
    
    
    

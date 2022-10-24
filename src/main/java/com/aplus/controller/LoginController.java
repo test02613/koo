@@ -54,9 +54,20 @@ public class LoginController {
 		if (name != null) { // 로그인 성공 시
 			int admin = memberService.loginAction_admin(vo);
 			vo.setAdmin(admin);
-			/*vo.getAdmin();*/
 			mav.setViewName("main/main"); // 뷰의 이름
 			session.setAttribute("admin", vo.getAdmin());
+			vo = memberService.login(vo);
+			int leave = vo.getLeave();
+			if(leave==1) {
+				mav.setViewName("member/login");
+				mav.addObject("message", "탈퇴한 회원 입니다");
+				session.invalidate();
+			}else if(leave ==2) {
+				mav.setViewName("member/login");
+				mav.addObject("message", "블랙리스트 입니다");
+				session.invalidate();
+			}
+			/*vo.getAdmin();*/
 
 		} else { // 로그인 실패 시
 			mav.setViewName("member/login");
