@@ -438,7 +438,7 @@ p {
 			</button>
 			<button style="width: 270px; height: 58px;"
 				class="btn btn-outline-danger" id="insertBasket"
-				onclick="fn_InsertBasket()">장바구니</button>
+				>장바구니</button>
 			<button style="width: 270px; height: 58px;"
 				class="btn btn-outline-danger" id="goodsOrder">구매하기</button>
 
@@ -556,5 +556,34 @@ p {
 			location.href = "/order?code=" + code;
 		}
 	}
+	
+	$("#insertBasket").on("click", function() { // 장바구니
+		$.ajax({
+			type : "get",
+			url : "/itemCode",
+			data : {
+				color : color,
+				num : num
+			},
+			async : false,//전역 변수 보내기
+			dataType : "json",
+			success : function(result) {
+				code = result;
+
+				console.log("확인 : " + result);
+				if (result) {
+					/* alert("완료"+code);  */
+					return code;
+				} else {
+					//alert("전송된 값 없음"+result);  
+				}
+			},
+			error : function() {
+				// alert("에러 발생"+result); 
+			}
+
+		});//아작스 끝
+		location.href = "/cartinsert?code=" + code;
+	});
 
 </script>

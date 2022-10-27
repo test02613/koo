@@ -18,4 +18,16 @@ public class CartServiceimpl implements CartService{
 		return dao.cart(id);
 	}
 
+	@Override
+	public ItemAttrVO cartcode(ItemAttrVO attr) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.cartcode(attr);
+	}
+
+	@Override
+	public void cartinsert(CartVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		dao.cartinsert(vo);
+	}
+
 }

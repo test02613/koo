@@ -19,4 +19,16 @@ public class CartDAOimpl implements CartDAO{
 		return sql.selectList("mapper.Cart_SQL.cart",id);
 	}
 
+	@Override
+	public ItemAttrVO cartcode(ItemAttrVO attr) throws Exception {
+		// TODO Auto-generated method stub
+		return sql.selectOne("mapper.Cart_SQL.cart_code",attr);
+	}
+
+	@Override
+	public void cartinsert(CartVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		sql.insert("mapper.Cart_SQL.cart_insert",vo);
+	}
+
 }

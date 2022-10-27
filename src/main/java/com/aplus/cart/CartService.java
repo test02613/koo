@@ -7,6 +7,10 @@ import com.aplus.item.ItemAttrVO;
 public interface CartService {
 	
 	public List<CartVO> cart(String id) throws Exception;
+	
+	public ItemAttrVO cartcode(ItemAttrVO attr) throws Exception;
+	
+	public void cartinsert(CartVO vo) throws Exception;
 
 
 }

@@ -21,7 +21,18 @@
 
 	</select>
 
+	<select id="cart_code" resultType="ItemAttrVO">
+
+		SELECT *
+		FROM itemattr
+		WHERE itemcode = #{itemcode}
+
+	</select>
 	
+	<insert id="cart_insert">
+	      INSERT INTO cart values(#{id} , #{itemname} , #{itemcode},
+	      #{itemcost},null,#{itemattr})
+	</insert>
 
 
 </mapper>

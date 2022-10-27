@@ -19,6 +19,8 @@ public class CartVO {
    private Integer itemcode;
    private Integer itemcost;
    private String itemimg;
+   private String itemattr;
+   
    
    /*public String getId() {
       return id;
